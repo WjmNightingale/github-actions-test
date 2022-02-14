@@ -1,6 +1,19 @@
 name: Github Actions Run
 
-on: [push]
+# on:
+#   push:
+#   pull_request:
+#     types: [closed, assigned, opened, reopned]
+
+on:
+  # cron schedule
+  schedule:
+    # '* * * * *'每个月的每一天的每一小时的每一分钟
+    # '1 * * * *'每个月的每一天的每一小时的第一分钟 比如某天的12:01 13:01 14:01 运行 workflows
+    - cron: '0/5 * * * *'
+    - cron: '0/6 * * * *'
+  push: null
+  pull_request: [closed, assigned, opened, reopened]
 
 jobs:
   run-github-actions:
