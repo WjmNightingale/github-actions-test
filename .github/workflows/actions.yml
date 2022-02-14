@@ -14,7 +14,6 @@ on:
   schedule:
     - cron: '0/5 * * * *'
     - cron: '0/6 * * * *'
-  push: null
   pull_request: [closed, assigned, opened, reopened]
 
 jobs:
