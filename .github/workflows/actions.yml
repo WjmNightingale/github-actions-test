@@ -11,10 +11,11 @@ name: Github Actions Run
 # '1 * * * *'每个月的每一天的每一小时的第一分钟 比如某天的12:01 13:01 14:01 运行 workflows
 
 on:
-  schedule:
-    - cron: '0/5 * * * *'
-    - cron: '0/6 * * * *'
-  push:
+  repository_dispatch:
+  # schedule:
+  #   - cron: '0/5 * * * *'
+  #   - cron: '0/6 * * * *'
+  # push:
   pull_request:
     types: [closed, assigned, opened, reopened]
 
@@ -23,6 +24,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
+        # 使用Github官方的checkout@v2下载仓库到GitHub 工作流所在的虚拟机
+        # official actions
         uses: actions/checkout@v2
       - name: List Files
         run: |
